@@ -1,0 +1,23 @@
+sudo:
+services:
+  - docker
+
+before_install:
+  #build development images
+  - docker build -t ze888899/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  #run test on the containers
+  - docker run -e CI=true ze888899/react-test npm test
+
+after_success:
+  #buikd production images
+  - docker build -t ze888899/confizep-client ./client
+  - docker build -t ze888899/confizep-nginx ./nginx
+  - docker build -t ze888899/confizep-server ./server
+  #log in to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #push images to docker hub
+  - docker push ze888899/confizep-client
+  - docker push ze888899/confizep-nginx
+  - docker push ze888899/confizep-server
