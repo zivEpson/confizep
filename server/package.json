@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "11.10.0",
+    "npm": "6.7.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -L"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "cors": "*",
+    "express": "^4.16.4",
+    "ip": "^1.1.5",
+    "mongoose": "^5.4.14",
+    "mongoose-deep-populate": "^3.1.1",
+    "nodemon": "^1.18.10",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "stripe": "^6.25.1"
+  }
+}
